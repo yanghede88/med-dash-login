@@ -4,7 +4,7 @@ If you haven't install Node.js in your computer,please download it from the foll
 
 1. Open your terminal<br> 
 2. Navigate to the main directory by typing the following command:<br>
-```cd med-dash-integration```
+```cd med-dash-login```
 3. Install the necessary dependencies:<br>
 ```npm install```
 4. Start the backend server:<br>
