@@ -12,7 +12,7 @@ import { DatePickerWithPresets } from './datepick'
 
 import entries from './sampleEntries.json'
 
-export function CarouselDemo() {
+function CarouselDemo() {
 
   return (
     <Carousel className="w-full max-w-xl">
@@ -37,3 +37,5 @@ export function CarouselDemo() {
     </Carousel>
   )
 }
+
+export default CarouselDemo
