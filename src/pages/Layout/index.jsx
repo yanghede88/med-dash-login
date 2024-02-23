@@ -79,6 +79,9 @@ const GeekLayout = () => {
             <Menu.Item icon={<EditOutlined />} key="3">
             <Link to={"/publish"}>Label III</Link>
             </Menu.Item>
+            <Menu.Item icon={<EditOutlined />} key="3">
+            <Link to={"/carouseldemo"}>Diary</Link>
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="layout-content" style={{ padding: 20 }}>

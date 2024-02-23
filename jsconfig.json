@@ -5,8 +5,8 @@
       "resolveJsonModule": true,
       "paths": {
         "@/*":["/*"],
-        "@/components/*": ["./components/*"],
-        "@/lib/utils": ["./lib/utils.ts"]
+       
+        "@/lib/utils": ["src/components/lib/utils.ts"]
       }
     }
 }

@@ -6,14 +6,6 @@ import DateRangePicker from '@/components/DatePicker'
 import Chart from '@/components/Chart'
 import ShowData from '@/components/ShowData'
 import SvgIcon from '@/components/SvgIcon'
-import DropDownMenu from '@/components/DropDownMenu'
-// import routing and page components
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HealthAnalysisPage from '@/pages/HealthAnalysisPage';
-import DiaryEntriesPage from '@/pages/DiaryEntriesPage';
-import ClinicianCommunicationPage from '@/pages/ClinicianCommunicationPage';
-import HomePage from '@/pages/HomePage'
-import HealthHabitEntries from '@/components/HealthHabit';
 import CSVFileSelector from '@/components/CSVFileSelector'
 
 

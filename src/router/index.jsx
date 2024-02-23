@@ -6,6 +6,8 @@ import {AuthRoute} from '@/components/AuthRoute'
 import Article from "@/pages/Article";
 import Publish from "@/pages/Publish";
 import Visualization from "@/components/Visualization";
+//import Diary from "@/components/CarouselDemo"
+//import Diaries from "@/pages/DiaryEntriesPage.jsx"
 // import Vis from '@/components/Vis.jsx"'
 const Home = () => {
     return <div>hello world</div>
@@ -32,7 +34,12 @@ const router = createBrowserRouter([
             {
                 path:'visualization',
                 element: <Visualization />
-            }
+            },
+            {
+                path:'carouseldemo',
+                element: <Diary></Diary>
+            },
+        
             // {
             //     path:'Vis',
             //     element: <Vis/>

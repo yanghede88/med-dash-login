@@ -1,14 +1,14 @@
 import * as React from "react"
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "./card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
-import { DatePickerWithPresets } from '@/components/ui/datepick'
+} from "./carousel"
+import { DatePickerWithPresets } from './datepick'
 
 import entries from './sampleEntries.json'
 
