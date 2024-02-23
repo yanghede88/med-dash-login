@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel"
 import { DatePickerWithPresets } from '@/components/ui/datepick'
 
-import entries from '@/SampleEntries.json';
+import entries from '@/Sam';
 
 
 export function CarouselDemo() {
