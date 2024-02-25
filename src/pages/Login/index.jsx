@@ -15,7 +15,7 @@ const Login = () => {
         // triger async action fetchLogin
         await dispatch(fetchLogin(values))
         // jump to landing page
-        navigate('/')
+        navigate('/home')
         message.success('success')
 
     }

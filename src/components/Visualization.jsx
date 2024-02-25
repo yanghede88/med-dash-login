@@ -6,15 +6,8 @@ import DateRangePicker from '@/components/DatePicker'
 import Chart from '@/components/Chart'
 import ShowData from '@/components/ShowData'
 import SvgIcon from '@/components/SvgIcon'
-import DropDownMenu from '@/components/DropDownMenu'
-// import routing and page components
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HealthAnalysisPage from '@/pages/HealthAnalysisPage';
-import DiaryEntriesPage from '@/pages/DiaryEntriesPage';
-import ClinicianCommunicationPage from '@/pages/ClinicianCommunicationPage';
-import HomePage from '@/pages/HomePage'
-import HealthHabitEntries from '@/components/HealthHabit';
-import CSVFileSelector from '@/components/CSVFileSelector'
+
+
 
 
 function Visualization() {
@@ -30,15 +23,6 @@ function Visualization() {
   return (
     <div className="mt-20 py-4 px-8">
       <section className="flex justify-between items-center">
-      {/* Extra Code */}
-      <div>
-      <h1>CSV File Selector</h1>
-      <CSVFileSelector/>
-      </div>
-      {/* Extra Code */}
-        
-    
-
         <div className="flex gap-4">
           <Button>
             <div className="flex gap-2">

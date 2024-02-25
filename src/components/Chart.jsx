@@ -1,11 +1,17 @@
-import { memo, useMemo } from 'react'
-import * as echarts from 'echarts'
-import ReactECharts from 'echarts-for-react'
-import { formatDate} from '@/utils/core'
+import React, { useState, useEffect } from 'react';
+import { memo } from 'react';
+import * as echarts from 'echarts';
+import ReactECharts from 'echarts-for-react';
+import { formatDate} from '/src/utils/core.js';
+import useFetchAndDisplayCSV from './useFetchAndDisplayCSV';
+
+const csvs = ['analysis_dataframe_cal.csv','analysis_dataframe_dist.csv','analysis_dataframe_heart.csv','analysis_dataframe_steps.csv']
+
+
+
 
 const Chart = memo(({ dateRange }) => {
-  // change the data here to patient data
-  const yOptions = [
+  let [yOptions, setYOptions] = useState([
     {
       name: 'data1',
       data: getRandomData(),
@@ -31,9 +37,54 @@ const Chart = memo(({ dateRange }) => {
     data,
     color,
     seriesOption: getSeriesOption({ name, from: color, data, type })
-  }))
+  })));
 
-  // the settings of graph
+  useEffect(() => {
+      async function fetchData() {
+        try {
+          const cal_data = await useFetchAndDisplayCSV(csvs[0]);
+          const dist_data = await useFetchAndDisplayCSV(csvs[1]);
+          const heart_data = await useFetchAndDisplayCSV(csvs[2]);
+          const steps_data = await useFetchAndDisplayCSV(csvs[3]);
+                 
+          setYOptions([
+            {
+              name: 'Calories Burned',
+              data: cal_data.data,
+              color: '#5ec9db'
+            },
+            {
+              name: 'Distance Traveled',
+              data: dist_data.data,
+              color: '#f5b97a'
+            },
+            {
+              name: 'Heart Rate',
+              data: heart_data.data,
+              color: '#f57a7a'
+              
+            },
+            {
+              name: 'Steps Taken',
+              data: steps_data.data, // Assuming useFetchAndDisplayCSV resolves to the structure { labels: [...], data: [...] }
+              color: '#d5d97a'
+            }
+          ].map(({ name, color, type = 'line', data }) => ({
+            name,
+            data,
+            color,
+            seriesOption: getSeriesOption({ name, from: color, data, type }),
+            visible: true
+
+          })));
+        } catch (error) {
+          console.error('Error fetching and parsing the CSV:', error);
+        }
+      }
+
+      fetchData();
+    }, []);
+
   const option = {
     color: yOptions.map(({ color }) => color),
     title: {
@@ -49,7 +100,8 @@ const Chart = memo(({ dateRange }) => {
     },
     legend: {
       x: 'center',
-      y: 'bottom'
+      y: 'bottom',
+      // selectedMode: false,
     },
     grid: {
       left: '0%',
@@ -78,7 +130,7 @@ const Chart = memo(({ dateRange }) => {
     yAxis: {
       type: 'value',
       axisLabel: {
-        formatter: '{value} unit',
+        formatter: '{value} units',
         align: 'center'
       },
       splitLine: {
@@ -88,12 +140,23 @@ const Chart = memo(({ dateRange }) => {
           width: 1
         }
       },
+      emphasis:{
+        focus: 'series'
+      },
+      legend:{
+        selectorLabel: {
+          show: true
+        },
+
+      },
       //set the max height greater than y-value
-      max: yOptions.map(({ data }) => Math.max(...data)).reduce((a, b) => Math.max(a, b)) + 150
+      min: 0,
+      max: 'dataMax' //dynamically set y-axis height
     },
     series: [...yOptions.map(({ seriesOption }) => seriesOption)]
   }
 
+  
   // generate the random data for testing purposes
   function getRandomData(len = dateRange.length || 11) {
     const data = []
@@ -121,14 +184,11 @@ const Chart = memo(({ dateRange }) => {
         show: false,
         position: 'top'
       },
-      emphasis: {
-        focus: 'series'
-      },
-      data: options.data
+      data: options.data,
     }
   }
 
-  return <ReactECharts option={option} style={{ height: 500 }} />
+  return <ReactECharts option={option} style={{ height: 500}} />
 })
 
 export default Chart
