@@ -5,7 +5,7 @@ import ReactECharts from 'echarts-for-react';
 import { formatDate} from '/src/utils/core.js';
 import useFetchAndDisplayCSV from './useFetchAndDisplayCSV';
 
-const csvs = ['analysis_dataframe_cal.csv','analysis_dataframe_dist.csv','analysis_dataframe_heart.csv','analysis_dataframe_steps.csv']
+const csvs = ['analysis_cal.csv','analysis_dist.csv','analysis_heart.csv','analysis_steps.csv']
 
 
 

@@ -1,0 +1,14 @@
+{
+    "auth_key": "sk_us_0agd3WczBFZTKZ3VPZQ6XAlTvlgL59p5u7Ma8shK3N0",
+    "user_id": "108adcd9-fc8f-4c1d-9371-431e706334b9",
+    "functions": [
+        "blood_oxygen", "blood_pressure", "caffeine", "cholesterol", "glucose",
+        "heartrate", "hrv", "hypnogram", "igg", "ige", "mindfulness_minutes",
+        "respiratory_rate", "water", "calories_active", "calories_basal",
+        "distance", "floors_climbed", "steps"
+    ],
+    "start_date": "2023-06-20",
+    "end_date": "2023-07-30",
+    "directory": "./src/vital_csvs",
+    "uri":"mongodb+srv://med-dash-deploy:passwordisGood@cluster0.ludjpq9.mongodb.net/?retryWrites=true&w=majority"
+}
