@@ -33,12 +33,12 @@ const items = [
   },
   {
     label: "文章管理",
-    key: "/article",
+    key: "/diary",
     icon: <DiffOutlined />,
   },
   {
     label: "创建文章",
-    key: "/publish",
+    key: "/healthTracker",
     icon: <EditOutlined />,
   },
 ];
@@ -69,15 +69,19 @@ const GeekLayout = () => {
             style={{ height: "100%", borderRight: 0}}
           >
             <Menu.Item icon={<HomeOutlined />} key="1" onClick={sayhello}>
-              <Link to={"/visualization"}>visualization</Link>
+              <Link to={"/home"}>Home Page</Link>
             </Menu.Item>
 
-            <Menu.Item icon={<DiffOutlined />} key="2">
-            <Link to={"/article"}>Label II</Link>
-              
+            <Menu.Item icon={<EditOutlined />} key="2">
+            <Link to={"/diary"}>Diary Entries</Link>
             </Menu.Item>
-            <Menu.Item icon={<EditOutlined />} key="3">
-            <Link to={"/publish"}>Label III</Link>
+
+            <Menu.Item icon={<DiffOutlined />} key="3">
+            <Link to={"/healthAnalysis"}>Health Analysis</Link>
+            </Menu.Item>
+
+            <Menu.Item icon={<EditOutlined />} key="4">
+            <Link to={"/healthTracker"}>Health Habit Tracker</Link>
             </Menu.Item>
           </Menu>
         </Sider>

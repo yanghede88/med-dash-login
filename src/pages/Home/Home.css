@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    align-items: center; /* Vertically align items */
+  }
+  .welcome-header {
+      text-align: left;
+      color: black;
+      font-weight: bold;
+      font-size: 60px;
+      margin-left: 50px;
+      margin-top: 50px;
+      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    button{
+      width:300px;
+      height:60px;
+      margin-right:10px;
+    }
+    .linkbtn{
+      display: flex;
+      padding: 50px;
+      margin-left:1em;
+      font-size: larger;
+      align-items: center;
+    }
+
+    
