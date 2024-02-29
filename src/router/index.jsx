@@ -6,7 +6,7 @@ import {AuthRoute} from '@/components/AuthRoute'
 import Article from "@/pages/Article";
 import Publish from "@/pages/Publish";
 import Visualization from "@/components/Visualization";
-import Diary from "@/components/CarouselDemo";
+import DiaryEntries from "@/components/DiaryEntries";
 //import Diaries from "@/pages/DiaryEntriesPage.jsx"
 // import Vis from '@/components/Vis.jsx"'
 const Home = () => {
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'carouseldemo',
-                element: <Diary />
+                element: <DiaryEntries/>
             },
         
             // {

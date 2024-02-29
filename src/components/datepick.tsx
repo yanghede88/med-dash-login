@@ -37,7 +37,7 @@ export function DatePickerWithPresets({givenDate = new Date()}) {
           {date ? format(date, "PPP") : <span>{format(givenDate, "PPP")}</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="flex w-auto flex-col space-y-2 p-2">
+      <PopoverContent className="flex w-auto flex-col space-y-2 p-2 bg-white">
         <Select
           onValueChange={(value) =>
             setDate(addDays(new Date(), parseInt(value)))
