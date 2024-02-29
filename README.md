@@ -12,9 +12,9 @@ If you haven't install Node.js in your computer,please download it from the foll
 5. Run the following command to fetch data:<br>
 ```python pull_mongodb_data.py```<br>
 ```pyhton process_vital_data.py analysis```<br>
-6. Start the backend server:<br>
+6. Start the server:<br>
 ```npm run dev```
-7. After starting the frontend server, you will see the URL of the local host displayed in the terminal.<br>
+7. After starting the server, you will see the URL of the local host displayed in the terminal.<br>
 8. Copy and paste this URL into your web browser's address bar.<br>
-9. You should now be able to access and interact with the login system locally in your browser.
+9. You should now be able to access and interact with the website locally in your browser.
 10. As for now, the username and password is fixed. Please use ```13800000002``` for username and ```246810``` for the password.
