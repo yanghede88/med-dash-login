@@ -12,6 +12,11 @@ import { DatePickerWithPresets } from './datepick'
 
 import entries from './sampleEntries.json'
 
+entries.push({
+  "entry": "Finished 2nd 181 midterm!!!",
+  "timestamp": "2024-02-29T18:25:43.511Z" 
+})
+
 function DiaryEntries() {
 
   return (

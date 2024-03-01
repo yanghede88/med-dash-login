@@ -22,15 +22,6 @@ function Visualization() {
   return (
     <div className="mt-20 py-4 px-8">
       <section className="flex justify-between items-center">
-      {/* Extra Code */}
-      <div>
-      <h1>CSV File Selector</h1>
-      <CSVFileSelector/>
-      </div>
-      {/* Extra Code */}
-        
-    
-
         <div className="flex gap-4">
           <Button>
             <div className="flex gap-2">

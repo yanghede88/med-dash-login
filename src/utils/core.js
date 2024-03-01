@@ -21,3 +21,4 @@ export const formatDate = (date, fmt = 'YYYY-MM-DD') => {
   return day(timeStamp).format(fmt)
 }
 
+
