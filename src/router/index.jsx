@@ -1,16 +1,11 @@
 import Layout from "@/pages/Layout"; // src/pages/layout
 import Login from "@/pages/Login";
 import {createBrowserRouter} from "react-router-dom";
-import {AuthRoute} from '@/components/AuthRoute'
+import {AuthRoute} from '@/components/AuthRoute';
 import Home from "@/pages/Home";
 import Visualization from "@/components/Visualization";
-import Article from "@/pages/Article";
-import Publish from "@/pages/Publish";
-// import Vis from '@/components/Vis.jsx"'
-const Home = () => {
-    return <div>hello world</div>
-  }
-  
+import HealthHabit from '@/components/HealthHabit';
+import DiaryEntries from "@/components/DiaryEntries";
 
 const router = createBrowserRouter([
     {
@@ -32,11 +27,11 @@ const router = createBrowserRouter([
             {
                 path:'healthAnalysis',
                 element: <Visualization />
-            },
-            {
-                path:'carouseldemo',
-                element: <DiaryEntries/>
-            },
+            }//,
+            // {
+            //     path:'carouseldemo',
+            //     element: <DiaryEntries/>
+            // },
         
         ]
     },
