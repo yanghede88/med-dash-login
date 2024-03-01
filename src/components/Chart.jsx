@@ -4,6 +4,7 @@ import * as echarts from 'echarts';
 import ReactECharts from 'echarts-for-react';
 import { formatDate} from '/src/utils/core.js';
 import useFetchAndDisplayCSV from './useFetchAndDisplayCSV';
+import { day } from '@/utils/day';
 
 const csvs = ['analysis_cal.csv','analysis_dist.csv','analysis_heart.csv','analysis_steps.csv']
 
@@ -11,6 +12,11 @@ const csvs = ['analysis_cal.csv','analysis_dist.csv','analysis_heart.csv','analy
 
 
 const Chart = memo(({ dateRange }) => {
+  let startDate = dateRange.slice(0)[0];
+  let endDate = dateRange.slice(-1)[0];
+
+  
+
   let [yOptions, setYOptions] = useState([
     {
       name: 'data1',
@@ -39,6 +45,7 @@ const Chart = memo(({ dateRange }) => {
     seriesOption: getSeriesOption({ name, from: color, data, type })
   })));
 
+
   useEffect(() => {
       async function fetchData() {
         try {
@@ -46,27 +53,46 @@ const Chart = memo(({ dateRange }) => {
           const dist_data = await useFetchAndDisplayCSV(csvs[1]);
           const heart_data = await useFetchAndDisplayCSV(csvs[2]);
           const steps_data = await useFetchAndDisplayCSV(csvs[3]);
-                 
+          
+          function filterData(healthData) { let filteredData = healthData.labels.map((label, index) => ({
+            date: day(label),
+            data: healthData.data[index] // Assuming your data is in the same order as labels
+          })).filter(item => (
+            item.date >= startDate && item.date <= endDate
+          ));
+          const filteredLabels = filteredData.map(item => item.date);
+          const filteredValues = filteredData.map(item => item.data);
+          
+          return{
+            labels: filteredLabels,
+            data: filteredValues
+            };
+          }
+          let filteredCalData = filterData(cal_data);
+          let filteredDistData = filterData(dist_data);
+          let filteredHeartData = filterData(heart_data);
+          let filteredStepsData = filterData(steps_data);
+
           setYOptions([
             {
-              name: 'Calories Burned',
-              data: cal_data.data,
+              name: 'Calories Burned (kcal)',
+              data: filteredCalData.data,
               color: '#5ec9db'
             },
             {
-              name: 'Distance Traveled',
-              data: dist_data.data,
+              name: 'Distance Traveled (meters)',
+              data: filteredDistData.data,
               color: '#f5b97a'
             },
             {
-              name: 'Heart Rate',
-              data: heart_data.data,
+              name: 'Heart Rate (bpm)',
+              data: filteredHeartData.data,
               color: '#f57a7a'
               
             },
             {
-              name: 'Steps Taken',
-              data: steps_data.data, // Assuming useFetchAndDisplayCSV resolves to the structure { labels: [...], data: [...] }
+              name: 'Steps Taken (count)',
+              data: filteredStepsData.data, // Assuming useFetchAndDisplayCSV resolves to the structure { labels: [...], data: [...] }
               color: '#d5d97a'
             }
           ].map(({ name, color, type = 'line', data }) => ({
@@ -83,7 +109,7 @@ const Chart = memo(({ dateRange }) => {
       }
 
       fetchData();
-    }, []);
+    }, [startDate,endDate]);
 
   const option = {
     color: yOptions.map(({ color }) => color),
@@ -112,6 +138,8 @@ const Chart = memo(({ dateRange }) => {
     xAxis: {
       type: 'category',
       data: dateRange.map((v) => formatDate(v, 'MM-DD')),
+      min: formatDate(startDate, 'MM-DD'), // Set the minimum date to the start date
+      max: formatDate(endDate, 'MM-DD'),
       splitLine: {
         show: false,
         lineStyle: {
@@ -126,6 +154,7 @@ const Chart = memo(({ dateRange }) => {
       axisLabel: {
         interval: 2
       }
+      // type:'time'
     },
     yAxis: {
       type: 'value',
