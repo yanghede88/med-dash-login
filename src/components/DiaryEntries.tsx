@@ -15,26 +15,28 @@ import entries from './sampleEntries.json'
 function DiaryEntries() {
 
   return (
-    <Carousel className="w-full max-w-xl">
-      <CarouselContent>
-        {entries.map(entry => (
-          <CarouselItem key={entry.timestamp}>
-            <div className="p-1">
-              <Card>
-                <CardHeader>
-                    <CardTitle className="flex justify-center p-6"><DatePickerWithPresets givenDate={new Date(entry.timestamp)}/></CardTitle>
-                </CardHeader>
-                <CardContent className="flex aspect-square p-6">
-                  <span>{entry.entry}</span>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className="flex justify-center">
+      <Carousel className="w-full max-w-xl">
+        <CarouselContent>
+          {entries.map(entry => (
+            <CarouselItem key={entry.timestamp}>
+              <div className="p-1">
+                <Card className="bg-white">
+                  <CardHeader>
+                      <CardTitle className="flex justify-center p-6"><DatePickerWithPresets givenDate={new Date(entry.timestamp)}/></CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex aspect-square p-6">
+                    <span>{entry.entry}</span>
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="bg-white"/>
+        <CarouselNext className="bg-white"/>
+      </Carousel>
+    </div>
   )
 }
 
