@@ -1,8 +1,12 @@
 {
     "compilerOptions": {
       "baseUrl": ".",
+      "jsx": "react",
+      "resolveJsonModule": true,
       "paths": {
-        "@/*": ["src/*"]
+        "@/*":["/*"],
+       
+        "@/lib/utils": ["src/components/lib/utils.ts"]
       }
     }
 }
