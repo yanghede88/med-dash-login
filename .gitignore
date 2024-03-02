@@ -34,3 +34,6 @@ venv
 
 #csv files
 /src/vital_csvs/
+
+#config.json
+config.json

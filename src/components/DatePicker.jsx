@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { DatePicker } from 'antd'
+import { day } from '@/utils/day'
 
 const { RangePicker } = DatePicker
 
@@ -10,7 +11,7 @@ const { RangePicker } = DatePicker
  */
 const DateRangePicker = ({ defaultDates, disabledRange = 15, onChange }) => {
   const [dates, setDates] = useState(defaultDates)
-
+  
   const disabledDate = (current) => {
     if (!dates) {
       return false
