@@ -83,7 +83,7 @@ const MoodSurvey = () => {
 
 
 const Home = () => (
-    <div >
+    <div className="home-page">
       <WelcomeHeader/>
       <MoodSurvey/>
       <MedDashImg />
