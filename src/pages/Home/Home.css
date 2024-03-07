@@ -2,9 +2,7 @@
     display: flex;
     align-items: center; /* Vertically align items */
   }
-  .home-page .site-layout-background {
-    display: none; /* Hide the layout bar only on the home page */
-}
+  
 
 .welcome-header {
     text-align: center;
