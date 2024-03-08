@@ -50,7 +50,7 @@ function sayhello() {
 
 const GeekLayout = () => {
   const location = useLocation();
-  const [isHomePage, setIsHomePage] = useState("/");
+  const [isHomePage, setIsHomePage] = useState(null);
 
   useEffect(() => {
     // Update the state to indicate if the current location is the home page
@@ -77,7 +77,7 @@ const GeekLayout = () => {
             defaultSelectedKeys={["1"]}
             style={{ height: "100%", borderRight: 0}}
           >
-            <Menu.Item icon={<HomeOutlined />} key="1" onClick={sayhello}>
+            <Menu.Item icon={<HomeOutlined />} key="1">
               <Link to={"/home"}>Home Page</Link>
             </Menu.Item>
 

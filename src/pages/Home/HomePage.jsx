@@ -22,7 +22,7 @@ const MedDashImg = () => (
       <Link to="/healthAnalysis"><Button className='linkbtn'>Health Analysis</Button></Link>
       <Link to="/diary"><Button className='linkbtn'>Diary</Button></Link>
       <Link to="/healthTracker"><Button className='linkbtn'>Health Habit Tracker</Button></Link>
-      <Link to="/clinicianComm"><Button className='linkbtn'>Clinician Communication</Button></Link>
+      {/* <Link to="/clinicianComm"><Button className='linkbtn'>Clinician Communication</Button></Link> */}
     </div>
     <Image
         width={500}

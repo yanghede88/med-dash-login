@@ -15,12 +15,13 @@
 
 
 .linkbtn {
-  display: block;
-  padding: 2.5em 2.55em;
+  display: flex;
+  padding: 2.5em 2.5em;
   margin-left: 1em;
   font-size:large;
   }
 
+<<<<<<< HEAD
   .mood {
     text-align : left;
     font-size: 45px;
@@ -51,6 +52,28 @@
   .shift{
       display: flex;
       justify-content: flex-end;
+=======
+.right-align {
+    text-align: right;
+    margin-left: 40em;
+    padding: 2em;
+  }
+  
+.left-align {
+    text-align: left;
+    margin-left: 50px;
+  }
+  
+.center-align {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+.app-background {
+    background-color: lightblue; 
+    min-height: 100vh; 
+>>>>>>> 976b4787cd628574b0b8e4d77ec0305abcf0ed51
   }
  
     
