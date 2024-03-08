@@ -14,18 +14,35 @@
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
   
-button {
-  width:300px;
-  height:60px;
-  margin-right:10px;
-  }
+
 
 .linkbtn {
-  display: block;
-  padding: 2.5em 2.55em;
+  display: flex;
+  padding: 2.5em 2.5em;
   margin-left: 1em;
   font-size:large;
   }
 
+.right-align {
+    text-align: right;
+    margin-left: 40em;
+    padding: 2em;
+  }
+  
+.left-align {
+    text-align: left;
+    margin-left: 50px;
+  }
+  
+.center-align {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+.app-background {
+    background-color: lightblue; 
+    min-height: 100vh; 
+  }
  
     
