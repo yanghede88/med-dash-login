@@ -3,8 +3,11 @@ import React from 'react';
 import { Image } from 'antd';
 import { Flex, Progress, Button } from 'antd';
 import '/src/App.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css'; // default styling
+
 
 const WelcomeHeader = () => (
   <h1 className="welcome-header">Welcome, Ben!</h1>
@@ -45,41 +48,52 @@ const ProgressCheck = () => (
   </div>
 );
 
-// Emoji component
-const Emoji = ({ symbol, onClick }) => (
-  <span
-    onClick={() => onClick(symbol)}
-    style={{ cursor: 'pointer', fontSize: '24px', margin: '0 10px' }}
-    role="img"
-    aria-label="Mood Emoji"
-  >
-    {symbol}
-  </span>
-);
-
-// Main component
 const MoodSurvey = () => {
-  const [selectedMood, setSelectedMood] = useState(null);
+  const [date, setDate] = useState(new Date());
+  const [moods, setMoods] = useState({}); // Object to store moods with date keys
 
-  const handleEmojiClick = (emoji) => {
-    setSelectedMood(emoji);
-    // Additional actions can be performed here
+  const handleMoodSelect = (selectedDate, mood) => {
+    setMoods({ ...moods, [selectedDate.toISOString().split('T')[0]]: mood });
   };
 
+  const renderCalendarDay = ({ date, view }) => {
+    if (view === 'month') {
+      const moodEmoji = moods[date.toISOString().split('T')[0]];
+      return (
+        <div>
+          {moodEmoji && <span>{moodEmoji}</span>}
+        </div>
+      );
+    }
+  };
+  
+
   return (
-    <div className='left-align'>
-      <p>How are you doing today?</p>
-      <div>
-        <Emoji symbol="😄" onClick={handleEmojiClick} /> {/* Smiley */}
-        <Emoji symbol="🙂" onClick={handleEmojiClick} /> {/* Slightly Smiley */}
-        <Emoji symbol="😐" onClick={handleEmojiClick} /> {/* Neutral */}
-        <Emoji symbol="🙁" onClick={handleEmojiClick} /> {/* Slightly Sad */}
-        <Emoji symbol="😢" onClick={handleEmojiClick} /> {/* Sad */}
-      </div>
-      {selectedMood && <p>You selected: {selectedMood}</p>}
+    <div class = "shift">
+      <Calendar
+        onChange={setDate}
+        value={date}
+        tileContent={({ date, view }) => renderCalendarDay({ date, view })}
+      />
+
+      <MoodSelector onMoodSelect={(mood) => handleMoodSelect(date, mood)} />
     </div>
   );
 };
+
+const MoodSelector = ({ onMoodSelect }) => {
+  const moods = ['😃', '😊', '😐', '😞', '😢'];
+  return (
+    <div>
+      {moods.map((mood, index) => (
+        <button key={index} className="mood-button" onClick={() => onMoodSelect(mood)}>
+          {mood}
+        </button>
+      ))}
+    </div>
+  );
+};
+
 
 
 const Home = () => (
