@@ -52,11 +52,12 @@ function Visualization() {
 
         // setFirstDateArray([calTimeData.slice(0)[0].split(" ")[0],distTimeData.slice(0)[0].split(" ")[0],heartTimeData.slice(0)[0].split(" ")[0],stepTimeData.slice(0)[0].split(" ")[0]])
         // setLastDateArray([calTimeData.slice(-1)[0].split(" ")[0],distTimeData.slice(-1)[0].split(" ")[0],heartTimeData.slice(-1)[0].split(" ")[0],stepTimeData.slice(-1)[0].split(" ")[0]])
-        
+
+        // Slices a piece of data like "2023-06-20 07:00:00" and returns the dates (e.g."2023-06-20 07:00:00" -> "2023-06-20)
         setFirstDateArray([calTimeData.slice(0)[0],distTimeData.slice(0)[0],heartTimeData.slice(0)[0],stepTimeData.slice(0)[0]])
         setLastDateArray([calTimeData.slice(-1)[0],distTimeData.slice(-1)[0],heartTimeData.slice(-1)[0],stepTimeData.slice(-1)[0]])
 
-        console.log(day(firstDateArray.slice(0)[0]))
+        
         if (firstDateArray.length > 0){
           handleDateChange([day(firstDateArray[0]),day(firstDateArray[0]).add(DISABLED_RANGE, 'days')])
         }
@@ -97,7 +98,7 @@ function Visualization() {
       <section className="mt-8 flex justify-end items-center">
         <DateRangePicker
           value={[startDate,endDate]}
-          defaultDateRange={defaultDateRange}
+          defaultDateRange={[defaultDateRange]}
           disabledRange={DISABLED_RANGE}
           onChange={handleDateChange}
           onReload
@@ -105,7 +106,7 @@ function Visualization() {
         
       </section>
 
-      <section className="mt-4 p-4 bg-white rounded-lg">
+      <section className="mt-4 p-4 bg-white rounded-lg max-w-screen-lg">
         <Chart dateRange={getDays(startDate, endDate)} />
       </section>
 

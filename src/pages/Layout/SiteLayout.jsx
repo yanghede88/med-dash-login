@@ -12,7 +12,7 @@
 // export default Layout
 
 import { Layout, Menu, Popconfirm } from "antd";
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Routes, Route, useLocation } from "react-router-dom";
 import {
   HomeOutlined,
   DiffOutlined,
@@ -21,7 +21,9 @@ import {
 } from "@ant-design/icons";
 import "./index.scss";
 import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 // import Vis from '../../components/Vis.jsx"'
+
 
 const { Header, Sider } = Layout;
 
@@ -47,6 +49,13 @@ function sayhello() {
 }
 
 const GeekLayout = () => {
+  const location = useLocation();
+  const [isHomePage, setIsHomePage] = useState(null);
+
+  useEffect(() => {
+    // Update the state to indicate if the current location is the home page
+    setIsHomePage(location.pathname === "/home");
+  }, [location.pathname]);
   return (
     <Layout>
       <Header className="layout-header">
@@ -61,14 +70,14 @@ const GeekLayout = () => {
         </div>
       </Header>
       <Layout>
-        <Sider width={200} className="site-layout-background" >
+        {!isHomePage && (<Sider width={200} className="site-layout-background" >
           <Menu
             mode="inline"
             theme="light"
             defaultSelectedKeys={["1"]}
             style={{ height: "100%", borderRight: 0}}
           >
-            <Menu.Item icon={<HomeOutlined />} key="1" onClick={sayhello}>
+            <Menu.Item icon={<HomeOutlined />} key="1">
               <Link to={"/home"}>Home Page</Link>
             </Menu.Item>
 
@@ -84,10 +93,10 @@ const GeekLayout = () => {
             <Link to={"/healthTracker"}>Health Habit Tracker</Link>
             </Menu.Item>
           </Menu>
-        </Sider>
+        </Sider>)}
         <Layout className="layout-content" style={{ padding: 20 }}>
        
-      
+
           <Outlet/>
         </Layout>
       </Layout>
