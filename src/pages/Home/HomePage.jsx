@@ -70,13 +70,12 @@ const MoodSurvey = () => {
 
   return (
     <div class = "shift">
+      <MoodSelector onMoodSelect={(mood) => handleMoodSelect(date, mood)} />
       <Calendar
         onChange={setDate}
         value={date}
         tileContent={({ date, view }) => renderCalendarDay({ date, view })}
       />
-
-      <MoodSelector onMoodSelect={(mood) => handleMoodSelect(date, mood)} />
     </div>
   );
 };
