@@ -1,10 +1,13 @@
+
 .container {
     display: flex;
-    align-items: center; /* Vertically align items */
+    justify-content:space-between;
+    align-items: center; 
   }
 
+
 .welcome-header {
-    text-align: left;
+    text-align: center;
     color: black;
     font-weight: bold;
     font-size: 60px;
@@ -60,10 +63,18 @@
   
 
 .shift{
-      display:table-row;
-      align-items: center;
-
+      display: flex;
+      /* justify-content:right; */
+      justify-content: space-between;
+      align-items: flex-end;
   }
+  
+.progress{
+  padding: 10px;
+  display: flex;
+  gap: 2em;
+  justify-content:center; 
+}
 
 
     

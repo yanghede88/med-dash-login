@@ -8,7 +8,6 @@ import ShowData from '@/components/ShowData'
 import SvgIcon from '@/components/SvgIcon'
 import useFetchAndDisplayCSV from './useFetchAndDisplayCSV'
 import { current } from '@reduxjs/toolkit'
-import * as data from '../../config.json';
 
 
 const csvs = ['analysis_cal.csv','analysis_dist.csv','analysis_heart.csv','analysis_steps.csv']
@@ -16,8 +15,6 @@ const csvs = ['analysis_cal.csv','analysis_dist.csv','analysis_heart.csv','analy
 const { RangePicker } = DatePicker;
 
 function Visualization() {
-  const start = data.startDate;
-  console.log(start)
   const DISABLED_RANGE = 31
   const defaultDateRange = [day().subtract(DISABLED_RANGE, 'days'), day()]
 

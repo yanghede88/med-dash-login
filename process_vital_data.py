@@ -18,16 +18,31 @@ def process_data(kind):
                 df.drop(columns=['id','timezone_offset','type'],inplace=True)
                 df['timestamp'] = pd.to_datetime(df['timestamp'].str.split("+").str[0])
                 df.sort_values('timestamp')
+                df['value'] = df['value'].apply(lambda x: round(x, 2))
                 filename = f'src/vital_csvs/analysis_{analysis_path_names[i[0]]}.csv'
                 df.to_csv(filename,index=False)
                 continue
-            
+
+            elif ((analysis_path_names[i[0]] == 'dist') or (analysis_path_names[i[0]] == 'steps'))  :
+                df = pd.read_csv(path)
+                df.drop(columns=['id','timezone_offset','type'],inplace=True)
+                df['timestamp'] = pd.to_datetime(df['timestamp'].str.split("+").str[0])
+                df['start'] = pd.to_datetime(df['start'].str.split("+").str[0])
+                df['end'] = pd.to_datetime(df['end'].str.split("+").str[0])
+                df.sort_values('timestamp')
+                print(df['value'].max())
+                df.loc[:,'value'] = df.loc[:,'value'].apply(lambda x:  x/1000).apply(lambda x: round(x,2))
+                filename = f'src/vital_csvs/analysis_{analysis_path_names[i[0]]}.csv'
+                df.to_csv(filename,index=False)
+                continue
+
             df = pd.read_csv(path)
             df.drop(columns=['id','timezone_offset','type'],inplace=True)
             df['timestamp'] = pd.to_datetime(df['timestamp'].str.split("+").str[0])
             df['start'] = pd.to_datetime(df['start'].str.split("+").str[0])
             df['end'] = pd.to_datetime(df['end'].str.split("+").str[0])
             df.sort_values('timestamp')
+            df['value'] = df['value'].apply(lambda x: round(x, 2))
             filename = f'src/vital_csvs/analysis_{analysis_path_names[i[0]]}.csv'
             df.to_csv(filename,index=False)
             

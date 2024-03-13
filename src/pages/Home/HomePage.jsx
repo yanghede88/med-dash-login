@@ -11,6 +11,7 @@ import useFetchDataPercentages from '@/components/useFetchDataPercentages';
 
 
 
+
 const WelcomeHeader = () => (
   <h1 className="welcome-header">Welcome, Ben!</h1>
 );
@@ -20,15 +21,12 @@ const MedDashImg = () => (
 
   <div className='container'>
     
-    <div className='button-container'>
-      <Link to="/healthAnalysis"><Button className='linkbtn'>Health Analysis</Button></Link>
-      <Link to="/diary"><Button className='linkbtn'>Diary</Button></Link>
-      <Link to="/healthTracker"><Button className='linkbtn'>Health Habit Tracker</Button></Link>
-    </div>
+    
     <Image
+        className = 'img-container'
         width={500}
         preview={false}
-        src="https://med-dash.github.io/static/media/dashboard-growth.9e985101d7d337104387.png" className='right-align'
+        src="../src/assets/med-dash-img.png" className='right-align'
     />
   </div>
 
@@ -38,12 +36,10 @@ const csvs = ['analysis_cal.csv','analysis_dist.csv','analysis_heart.csv','analy
 const x = 50;
 
 const ProgressCheck = () => {
-  useFetchDataPercentages(csvs[0])
   return (
   // This will display 100 if the data from the requested date range is successfully imported, and if not it will display the percentage of data successfully imported
-  
-  <div className = 'center-align'>
-    <Flex gap="large" style={{ gap: '50px' }}>
+  <div className = 'progress'>
+    {/* <Flex gap="large" style={{ gap: '50px' }}> */}
       <ConfigProvider theme={{
           components: {
             Progress: {
@@ -56,7 +52,7 @@ const ProgressCheck = () => {
         <Progress type="circle" percent={useFetchDataPercentages(csvs[2])} format = {(percent) => `Heartrate Data: ${percent}%`} />
         <Progress type="circle" percent={useFetchDataPercentages(csvs[3])} format = {(percent) => `Step Data: ${percent}%`}/>
       </ConfigProvider>
-    </Flex>
+    {/* </Flex> */}
   </div>  
   )   
 };
@@ -83,12 +79,21 @@ const MoodSurvey = () => {
 
   return (
     <div className = "shift">
+      <div className='button-container'>
+      <Link to="/healthAnalysis"><Button className='linkbtn'>Health Analysis</Button></Link>
+      <Link to="/diary"><Button className='linkbtn'>Diary</Button></Link>
+      <Link to="/healthTracker"><Button className='linkbtn'>Health Habit Tracker</Button></Link>
+    </div>
+    <div className='mood-container'>
+
+    <h1 style={{fontSize: 16}}> How are you feeling today?</h1>
       <MoodSelector onMoodSelect={(mood) => handleMoodSelect(date, mood)} />
       <Calendar
         onChange={setDate}
         value={date}
         tileContent={({ date, view }) => renderCalendarDay({ date, view })}
       />
+      </div>
     </div>
   );
 };
@@ -109,12 +114,11 @@ const MoodSelector = ({ onMoodSelect }) => {
 
 
 const Home = () => (
-    <div>
+    <body>
       <WelcomeHeader/>
       <MoodSurvey/>
-      <MedDashImg />
       <ProgressCheck />
-    </div>
+    </body>
   );
   
   export default Home;

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { DatePicker } from 'antd'
 import { day } from '@/utils/day'
+import * as data from '../../config.json'
 
 
 const { RangePicker } = DatePicker
@@ -40,7 +41,7 @@ const DateRangePicker = ({ defaultDates, disabledRange = 15, onChange }) => {
       onCalendarChange={(val) => {
         setDates(val)
       }}
-      defaultValue={dates}
+      defaultValue={[day(data.start_date),day(data.end_date)]}
       changeOnBlur
     />
   )
