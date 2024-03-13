@@ -1,33 +1,20 @@
 #root {
+    
     max-width: auto;
-    margin: 0 auto;
+    margin: auto auto;
     text-align: center;
   }
   
-  body {
+body {
     background-color: #f0f2f5;
+    background-image: url('../src/assets/med-dash-img.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat:no-repeat;
   }
   
-  .right-align {
-    text-align: right;
-    margin-left: 30em;
-    padding: 2em;
-  }
-  
-  .left-align {
-    text-align: left;
-    margin-left: 50px;
-  }
-  
-  .center-align {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-  }
-  
-  .app-background {
-    background-color: lightblue; 
-    min-height: 100vh; 
-  }
-  
-  
+.global-button {
+    width:300px;
+    height:60px;
+    margin-right:10px;
+}

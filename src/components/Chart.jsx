@@ -80,7 +80,7 @@ const Chart = memo(({ dateRange }) => {
               color: '#5ec9db'
             },
             {
-              name: 'Distance Traveled (meters)',
+              name: 'Distance Traveled (kilometers)',
               data: filteredDistData.data,
               color: '#f5b97a'
             },
@@ -91,7 +91,7 @@ const Chart = memo(({ dateRange }) => {
               
             },
             {
-              name: 'Steps Taken (count)',
+              name: 'Steps Taken (per 1000 steps)',
               data: filteredStepsData.data, // Assuming useFetchAndDisplayCSV resolves to the structure { labels: [...], data: [...] }
               color: '#d5d97a'
             }
