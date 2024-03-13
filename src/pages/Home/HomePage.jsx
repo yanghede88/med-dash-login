@@ -17,21 +17,21 @@ const WelcomeHeader = () => (
 );
 
 
-const MedDashImg = () => (
+// const MedDashImg = () => (
 
-  <div className='container'>
+//   <div className='container'>
     
     
-    <Image
-        className = 'img-container'
-        width={500}
-        preview={false}
-        src="../src/assets/med-dash-img.png" className='right-align'
-    />
-  </div>
+//     <Image
+//         className = 'img-container'
+//         width={500}
+//         preview={false}
+//         src="../src/assets/med-dash-img.png" className='right-align'
+//     />
+//   </div>
 
 
-);
+// );
 const csvs = ['analysis_cal.csv','analysis_dist.csv','analysis_heart.csv','analysis_steps.csv']
 const x = 50;
 
