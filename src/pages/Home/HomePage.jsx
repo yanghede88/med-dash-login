@@ -1,12 +1,14 @@
 import './Home.css'
 import React from 'react';
-import { Image } from 'antd';
+import { Image, ConfigProvider } from 'antd';
 import { Flex, Progress, Button } from 'antd';
 import '/src/App.css'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // default styling
+import useFetchDataPercentages from '@/components/useFetchDataPercentages';
+
 
 
 const WelcomeHeader = () => (
@@ -22,7 +24,6 @@ const MedDashImg = () => (
       <Link to="/healthAnalysis"><Button className='linkbtn'>Health Analysis</Button></Link>
       <Link to="/diary"><Button className='linkbtn'>Diary</Button></Link>
       <Link to="/healthTracker"><Button className='linkbtn'>Health Habit Tracker</Button></Link>
-      {/* <Link to="/clinicianComm"><Button className='linkbtn'>Clinician Communication</Button></Link> */}
     </div>
     <Image
         width={500}
@@ -33,20 +34,32 @@ const MedDashImg = () => (
 
 
 );
-
+const csvs = ['analysis_cal.csv','analysis_dist.csv','analysis_heart.csv','analysis_steps.csv']
 const x = 50;
-const ProgressCheck = () => (
 
+const ProgressCheck = () => {
+  useFetchDataPercentages(csvs[0])
+  return (
+  // This will display 100 if the data from the requested date range is successfully imported, and if not it will display the percentage of data successfully imported
+  
   <div className = 'center-align'>
     <Flex gap="large" style={{ gap: '50px' }}>
-      <Progress type="circle" percent={10} strokeColor = "red"/>
-      <Progress type="circle" percent={100 - x} />
-      <Progress type="circle" percent={100} />
-      <Progress type="circle" percent={70}  />
-      <Progress type="circle" percent={5} strokeColor = "red" />
+      <ConfigProvider theme={{
+          components: {
+            Progress: {
+              circleTextFontSize: "0.75em"
+            },
+          },
+        }}> 
+        <Progress type="circle" percent={useFetchDataPercentages(csvs[0])} format = {(percent) => `Calorie Data: ${percent}%`} />
+        <Progress type="circle" percent={useFetchDataPercentages(csvs[1])} format = {(percent) => `Dist. Data: ${percent}%`} />
+        <Progress type="circle" percent={useFetchDataPercentages(csvs[2])} format = {(percent) => `Heartrate Data: ${percent}%`} />
+        <Progress type="circle" percent={useFetchDataPercentages(csvs[3])} format = {(percent) => `Step Data: ${percent}%`}/>
+      </ConfigProvider>
     </Flex>
-  </div>
-);
+  </div>  
+  )   
+};
 
 const MoodSurvey = () => {
   const [date, setDate] = useState(new Date());
@@ -69,7 +82,7 @@ const MoodSurvey = () => {
   
 
   return (
-    <div class = "shift">
+    <div className = "shift">
       <MoodSelector onMoodSelect={(mood) => handleMoodSelect(date, mood)} />
       <Calendar
         onChange={setDate}
