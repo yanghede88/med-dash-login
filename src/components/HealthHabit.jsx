@@ -5,9 +5,8 @@ import React, { useState, useRef, useEffect } from 'react';
 export default function MyApp() {
   return (
     <div>
-      <h1>Health Habits and Heart Rate Analysis</h1>
+      <h1>Health Habits</h1>
       <HealthHabit />
-      <HeartRateAnalysis />
 	<GoalTracker/>
 	<HabitTracker/>
     </div>
@@ -122,7 +121,8 @@ function editGoal() {
     </>
   );
 }
-function HeartRateAnalysis() {
+
+/*function HeartRateAnalysis() {
   // Define state for today's heart rate and weekly average heart rate
   const [todayHeartRate, setTodayHeartRate] = useState(0);
   const [weeklyAverageHeartRate, setWeeklyAverageHeartRate] = useState(0);
@@ -170,7 +170,7 @@ function HeartRateAnalysis() {
     </div>
   );
 }
-
+*/
 
 
 
