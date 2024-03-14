@@ -5,7 +5,7 @@ import {AuthRoute} from '@/components/AuthRoute';
 import Home from "@/pages/Home";
 import Visualization from "@/components/Visualization";
 import HealthHabit from '@/components/HealthHabit';
-import DiaryEntries from "@/components/DiaryEntries";
+import DiaryEntries from "@/pages/Diary/DiaryEntries";
 
 const router = createBrowserRouter([
     {
@@ -27,12 +27,7 @@ const router = createBrowserRouter([
             {
                 path:'healthAnalysis',
                 element: <Visualization />
-            }//,
-            // {
-            //     path:'carouseldemo',
-            //     element: <DiaryEntries/>
-            // },
-        
+            }
         ]
     },
     {
