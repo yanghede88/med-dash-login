@@ -77,7 +77,7 @@ export function EntryForm({ onSubmit }: EntryFormProps) {
                                                     </Button>
                                                 </FormControl>
                                             </PopoverTrigger>
-                                            <PopoverContent className="w-auto p-0" align="start">
+                                            <PopoverContent className="w-auto p-0 bg-white" align="start">
                                                 <Calendar
                                                     mode="single"
                                                     selected={field.value}
@@ -95,7 +95,7 @@ export function EntryForm({ onSubmit }: EntryFormProps) {
                             />
                         </CardTitle>
                     </CardHeader>
-                    <CardContent className="flex aspect-[4/3] p-6 w-full">
+                    <CardContent className="flex aspect-[5/3] p-6 w-full">
                         <FormField
                             control={form.control}
                             name="entry"
